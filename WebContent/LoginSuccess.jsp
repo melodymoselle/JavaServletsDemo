@@ -16,19 +16,19 @@ if(session.getAttribute("user")==null){
 String userName = null;
 String sessionID = null;
 Cookie[] cookies = request.getCookies();
-if(cookies !=null){
+if(cookies != null){
 for(Cookie cookie : cookies){
 	if(cookie.getName().equals("user")) userName = cookie.getValue();
 	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 }
-}
+}else sessionID = session.getId();
 %>
 <h3>Hi <%=userName %>, Login successful. Your Session ID=<%=sessionID %></h3>
 <br>
 User=<%=user %>
 <br>
-<a href="CheckoutPage.jsp">Checkout Page</a>
-<form action="LogoutServlet" method="post">
+<a href="<%=response.encodeURL("CheckoutPage.jsp") %>">Checkout Page</a>
+<form action="<%=response.encodeURL("LogoutServlet") %>" method="post">
 <input type="submit" value="Logout" >
 </form>
 </body>

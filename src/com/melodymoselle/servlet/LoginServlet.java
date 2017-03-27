@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -39,9 +38,7 @@ public class LoginServlet extends HttpServlet {
 			Cookie userName = new Cookie("user", user);
 			userName.setMaxAge(30*60);
 			response.addCookie(userName);
-			//Get the encoded Url
-			String encodedUrl = response.encodeRedirectURL("LoginSuccess.jsp");
-			response.sendRedirect(encodedUrl);
+			response.sendRedirect("LoginSuccess.jsp");
 		}else{
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
 			PrintWriter out= response.getWriter();

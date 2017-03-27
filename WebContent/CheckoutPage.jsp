@@ -8,10 +8,7 @@
 </head>
 <body>
 <%
-//allow access only if session exists
-if(session.getAttribute("user") == null){
-	response.sendRedirect("login.html");
-}
+ 
 String userName = null;
 String sessionID = null;
 Cookie[] cookies = request.getCookies();
@@ -23,7 +20,7 @@ for(Cookie cookie : cookies){
 %>
 <h3>Hi <%=userName %>, do the checkout.</h3>
 <br>
-<form action="<%=response.encodeURL("LogoutServlet") %>" method="post">
+<form action="LogoutServlet" method="post">
 <input type="submit" value="Logout" >
 </form>
 </body>

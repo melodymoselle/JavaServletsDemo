@@ -34,7 +34,6 @@ public class LogoutServlet extends HttpServlet {
         	if(session != null){
         		session.invalidate();
         	}
-        	//no encoding because we have invalidated the session
         	response.sendRedirect("login.html");
         }
 
